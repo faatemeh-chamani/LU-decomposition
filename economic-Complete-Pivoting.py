@@ -1,22 +1,37 @@
 import numpy as np
+print("If You Want To Enter Elements Of The Matrix Manually Enter m Else If You Want To Read It From File Enter f:")
+t = input(" ")
+tf = False
+while tf is not True:
+    if t == "m":                       # Get Matrix From User
+        n = int(input("Please Enter The Dimension Of The Matrix: "))
+        A0 = np.zeros((n, n))
+        for i in range(0, n):
+            for j in range(0, n):
+                print("A[", i, ",", j, "] :")
+                A0[i, j] = int(input(""))
 
-#########################################################################
-#              ECONOMICAL COMPLETE PIVOTING                             #
-#########################################################################
-
-n = int(input("Please Enter The Dimension Of The Matrix: "))
-A0 = np.zeros((n, n))
-for i in range(0, n):
-    for j in range(0, n):
-        print("A[", i, ",", j, "] :")
-        A0[i, j] = int(input(""))
-
-b = np.zeros(n)
-print(" Please Enter The Elements Of b: ")
-for i in range(0, n):
-    print("b[", i, "]: ")
-    b[i] = float(input(""))
-
+        b = np.zeros(n)
+        print(" Please Enter The Elements Of b: ")
+        for i in range(0, n):
+            print("b[", i, "]: ")
+            b[i] = float(input(""))
+        tf = True
+    elif t == "f":                   # Read Matrix from a File
+        a = np.array(([1, 4], [7, 5]))
+        e = np.array([1, 1])
+        np.savetxt("file1.text", a, delimiter=',')
+        np.savetxt("file2.text", e, delimiter=',')
+        A0 = np.loadtxt("file1.text", delimiter=',')
+        b = np.loadtxt("file2.text", delimiter=',')
+        print(A0)
+        print("RHS vector")
+        print(b)
+        n, _ = np.shape(A0)
+        tf = True
+    else:
+        t = input("_You Should Enter f or m_")
+print("--------------------------------------")
 row = np.zeros(n)
 column = np.zeros(n)
 A = A0.copy()
@@ -123,6 +138,7 @@ file.close()
 #####################################################################################
 #                        SOLVE SYSTEM Ax = b                                        #
 #####################################################################################
+
 # MAQ = U
 # Ax = b
 b1 = MM.dot(b)                                  # b1 = Mb
@@ -142,7 +158,7 @@ file = open("file.text", 'a')
 file.write('\nThe System is Solved Using MAQ = U\n')
 file.write('The Answer is:\n' + str(x1))
 file.close()
-
+print("--------------------------------------")
 # PAQ = LU
 # Ax = b
 # SOLVE SYSTEM Ax = b USING PAQ = LU
@@ -176,3 +192,4 @@ file.write('The Answer is:\n' + str(x2))
 file.close()
 
 print(" 'All Computations Are Stored In A File'  ")
+print("--------------------------------------")
