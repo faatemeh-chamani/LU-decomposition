@@ -16,7 +16,7 @@ print(" Please Enter The Elements Of b: ")
 for i in range(0, n):
     print("b[", i, "]: ")
     b[i] = float(input(""))
-
+print("--------------------------------------")
 P = np.zeros((n-1, n, n))
 Q = np.zeros((n-1, n, n))
 M = np.zeros((n-1, n, n))
@@ -60,6 +60,7 @@ for k in range(0, n-1):
         print("Matrix A in Step ", k + 1, "is:\n", A[k+1, :, :])
 
 ######################################################################################################
+print("--------------------------------------")
 # MAQ = U
 # PAQ = LU
 MM = np.eye(n)
@@ -87,6 +88,7 @@ print("PAQ - LU:\n", (PP.dot(A[0, :, :])).dot(QQ) - L.dot(U))         # PAQ - LU
 #####################################################################################
 #                        SOLVE SYSTEM Ax = b                                        #
 #####################################################################################
+print("--------------------------------------")
 # MAQ = U
 # SOLVE SYSTEM Ax = b USING MAQ = U
 b1 = MM.dot(b)                                                       # b1 = Mb
@@ -104,7 +106,7 @@ for i in range(n-2, -1, -1):                                         # Uy = b1 (
 x1 = QQ.dot(y1)                                                      # x = Qy
 print("The System is Solved Using MAQ = U")
 print("The Answer is:\n", x1)
-
+print("--------------------------------------")
 # PAQ = LU
 # Ax = b
 # SOLVE SYSTEM Ax = b USING PAQ = LU
@@ -115,7 +117,6 @@ x2 = np.zeros(n)
 z = np.zeros(n)
 z[0] = b2[0]/L[0, 0]
 y2 = np.zeros(n)
-y2[n-1] = z[n-1] / U[n-1, n-1]
 for i in range(1, n):                                                # Lz = b2 (forward)
     for j in range(1, i+1):
         s2 += L[i, j-1]*z[j-1]
