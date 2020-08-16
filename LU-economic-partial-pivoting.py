@@ -1,7 +1,7 @@
 import numpy as np
 
 #########################################################################
-#              ECONOMICAL COMPLETE PIVOTING                             #
+#              ECONOMICAL PARTIAL PIVOTING                             #
 #########################################################################
 
 # MAQ = U
@@ -17,7 +17,7 @@ print(" Please Enter The Elements Of b: ")
 for i in range(0, n):
     print("b[", i, "]: ")
     b[i] = float(input(""))
-
+print("--------------------------------------")
 row = np.zeros(n)
 A = A0.copy()
 for k in range(0, n-1):
@@ -79,7 +79,7 @@ print("The Unit Triangular Matrix L Is:\n", L)
 print("MA - U:\n", np.dot(MM, A0) - U)
 print("PA - LU:\n", np.dot(PP, A0) - np.dot(L, U))
 #####################################################################################
-
+print("--------------------------------------")
 # MA = U
 # Ax = b
 b1 = np.dot(MM, b)                                                 # b1 = Mb
@@ -95,7 +95,7 @@ for i in range(n-2, -1, -1):                                         # Ux = b1 (
         s1 = 0
 print("The System is Solved Using MAQ = U")
 print("The Answer is:\n", x1)
-
+print("--------------------------------------")
 # PA = LU
 # Ax = b
 b2 = np.dot(PP, b)                                                    # b2 = pb
@@ -121,3 +121,4 @@ for i in range(n-2, -1, -1):                                        # Ux = y (ba
         s3 = 0
 print("The System is Solved Using PAQ = LU")
 print("The Answer is:\n", x2)
+
