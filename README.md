@@ -1,6 +1,6 @@
 
 lu decomposition 
-partial and complete pivoting 
+partial and complete pivoting |
 economic and noneconomic way
 language : python
 >>>>>>> ab90e3868e517e6b2e9aff254bcfce992c058908
